@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background-color: $white;
+  font-family: 'Proxima Nova', sans-serif;
+}
+img {
+  display: block;
+}
+
+svg {
+
+  text {
+    fill: $white;
+    font-family: 'Proxima Nova', sans-serif;
+  }
+  .area {
+    fill: rgba($white, 0.1);
+  }
+  .line {
+    stroke: $white;
+  }
+  .tick line {
+    stroke: rgba($white, 0.1);
+  }
+  .axis--x .tick:last-of-type text {
+    text-anchor: end !important;
+  }
+  .gradient {
+    width: 800px;
+    height: 400px;
+    fill: url(#gradient);
+  }
+}
