@@ -24,5 +24,3 @@ meteorhacks:npm
 npm-container
 d3js:d3
 momentjs:moment
-# mrt:cheerio
-bryanmorgan:webshot

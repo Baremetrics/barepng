@@ -7,7 +7,6 @@ blaze@2.1.3
 blaze-html-templates@1.0.1
 blaze-tools@1.0.4
 boilerplate-generator@1.0.4
-bryanmorgan:webshot@1.0.0
 caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
