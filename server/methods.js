@@ -1,4 +1,4 @@
-var phantomjs = Meteor.npmRequire('phantomjs');
+var phantomjs = Meteor.npmRequire('phantomjs-prebuilt');
 var Future = Npm.require('fibers/future');
 var fs = Npm.require('fs');
 var spawn = Npm.require('child_process').spawn;

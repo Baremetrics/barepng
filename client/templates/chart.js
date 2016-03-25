@@ -1,4 +1,4 @@
-Template.svg.rendered = function() {
+Template.chart.rendered = function() {
   var graph = new Graph();
   graph.draw();
   // Graph.svg2png(function(data) {
@@ -6,10 +6,10 @@ Template.svg.rendered = function() {
   // });
 }
 
-Template.svg.events({
+Template.chart.events({
   
 });
 
-Template.svg.helpers({
+Template.chart.helpers({
   
 });

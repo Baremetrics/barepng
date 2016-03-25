@@ -1,6 +1,6 @@
 var page = require('webpage').create();
 var args = require('system').args;
-var address = 'http://baremetrics.dev/chart?data='+ args[1];
+var address = 'https://dashboard.baremetrics.com/chart?data='+ args[1];
 var output = 'image.png';
 
 page.viewportSize = {
@@ -21,6 +21,7 @@ page.open(address, function(status) {
   } else {
     window.setTimeout(function() {
       page.render(output);
+      page.close();
       phantom.exit();
     }, 10);
   }
