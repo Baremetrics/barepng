@@ -15,6 +15,7 @@ img {
 }
 
 svg {
+  background: linear-gradient(to top left, #41b7cc, #2693d5);
 
   text {
     fill: $white;
@@ -31,10 +32,5 @@ svg {
   }
   .axis--x .tick:last-of-type text {
     text-anchor: end !important;
-  }
-  .gradient {
-    width: 800px;
-    height: 400px;
-    fill: url(#gradient);
   }
 }

@@ -1,14 +1,27 @@
 var page = require('webpage').create();
-var path = 'http://baremetrics.dev/chart?data=[[1456358399000,43991.0],[1456444799000,44192.0],[1456531199000,44289.0],[1456617599000,44367.0],[1456703999000,44413.0],[1456790399000,44443.0],[1456876799000,44791.0],[1456963199000,44789.0],[1457049599000,45138.0],[1457135999000,45173.0],[1457222399000,45159.0],[1457308799000,45191.0],[1457395199000,45372.0],[1457481599000,45357.0],[1457567999000,45408.0],[1457654399000,45458.0],[1457740799000,45845.0],[1457827199000,45889.0],[1457913599000,45939.0],[1457999999000,45983.0],[1458086399000,46054.0],[1458172799000,45443.0],[1458259199000,45707.0],[1458345599000,45170.0],[1458431999000,45301.0],[1458518399000,45298.0],[1458604799000,45384.0],[1458691199000,45741.0],[1458777599000,45741.0]]';
-page.settings.userAgent = 'SpecialAgent';
+var args = require('system').args;
+var address = 'http://baremetrics.dev/chart?data='+ args[1];
+var output = 'image.png';
 
-page.open(path, function(status) {
+page.viewportSize = {
+  width: 800, 
+  height: 400 
+}
+
+page.clipRect = {
+  top: 0, 
+  left: 0, 
+  width: 800, 
+  height: 400 
+};
+
+page.open(address, function(status) {
   if (status !== 'success') {
     console.log('Unable to access network');
   } else {
-    page.evaluate(function() {
-     return document.querySelector('body').innerHTML;
-    });
+    window.setTimeout(function() {
+      page.render(output);
+      phantom.exit();
+    }, 10);
   }
-  phantom.exit();
 });

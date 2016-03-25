@@ -2,25 +2,19 @@ Router.configure({
   layoutTemplate: 'layout'
 });
 
-Router.route('/', {name: 'home'});
+Router.route('/svg', {name: 'svg'});
 
-Router.route('/svg', function() {
-  this.render('svg', {
-    data: function () {
-      return this.params.query.data || '[[0,0],[1,1]]';
-    }
-  });
-});
-
-Router.route('/png', {
+Router.route('/', {
   where: 'server'
 })
 .get(function() {
-  this.response.writeHead(200, {
-    'access-control-allow-origin': '*',
-    'Content-Type': 'image/png'
-  });
-
+  // this.response.writeHead(200, {
+  //   'access-control-allow-origin': '*',
+  //   'Content-Type': 'image/png'
+  // });
+  var start = new Date().getTime();
   var file = Meteor.call('phantom', this.request.query.data);
+
+  console.log(new Date().getTime() - start +'/ms');
   this.response.end(file, 'base64');
 });

@@ -1,14 +1,17 @@
 Graph = function() {
-  this.element = $('svg');
-  this.svg = d3.select(this.element[0]);
+  this.svg = d3.select('svg');
 
-  this.data = this.element.data('array');
+  this.data = window.location.search && 
+    window.location.search.split('=')[1] &&
+    window.location.search.split('=')[1] != 'undefined' ? 
+    JSON.parse(window.location.search.split('=')[1]) : 
+    [[0,0],[1,1]];
   
   this.dates = null;
   this.amounts = null;
 
-  this.width = null;
-  this.height = null;
+  this.width = 800;
+  this.height = 400;
 
   this.xScale = null;
   this.yScale = null;
@@ -19,16 +22,13 @@ Graph = function() {
 Graph.prototype.draw = function() {
   var self = this;
 
-  this.dates = _.map(this.data, function(d) {
+  this.dates = this.data.map(function(d) {
     return d[0];
   });
 
-  this.amounts = _.map(this.data, function(d) {
+  this.amounts = this.data.map(function(d) {
     return d[1];
   });
-
-  this.width = this.element.width();
-  this.height = this.element.height();
 
   this.yScale = d3.scale.linear()
     .domain(d3.extent(this.amounts))
@@ -39,9 +39,6 @@ Graph.prototype.draw = function() {
     .range([0, this.width]);
 
   this.yAxis = d3.svg.axis()
-    // .tickFormat(function(d) {
-    //   return $$(d);
-    // })
     .ticks(6)
     .tickPadding(24)
     .tickSize(0, 0)
@@ -53,9 +50,13 @@ Graph.prototype.draw = function() {
   this.svg.select('.axis--y')
     .call(this.yAxis);
 
-  var offset = d3.max($('.axis--y text').map(function(i, d) {
-    return d.getBBox().width + 24;
-  }));
+  var y_items = document.querySelectorAll('.axis--y text');
+  var offset = [];
+  var i;
+
+  for (i = 0; i < y_items.length; ++i) {
+    offset.push(y_items[i].getBBox().width + 24);
+  } offset = d3.max(offset);
 
   this.svg.select('.axis--y')
     .selectAll('line').attr({
@@ -69,7 +70,8 @@ Graph.prototype.draw = function() {
   this.xAxis = d3.svg.axis()
     .tickValues(this.dates)
     .tickFormat(function(d) {
-      return moment(d).format('MMM D');
+      var date = new Date(d).toDateString().split(' ');
+      return date[1] +' '+ date[2];
     })
     .tickPadding(0)
     .tickSize(0, 0)
@@ -90,35 +92,34 @@ Graph.prototype.draw = function() {
   var minWidth;
   var targetRight;
 
-  $('svg .axis--x .tick text').css('opacity', 0);
+  var x_items = document.querySelectorAll('.axis--x text');
+  var x_lines = document.querySelectorAll('.axis--x line');
+  var ticks = document.querySelectorAll('.axis--x .tick');
 
-  $('svg .axis--x .tick').each(function() {
-    widths.push(this.getBBox().width);
-  });
+  for (i = 0; i < x_items.length; ++i) {
+    widths.push(x_items[i].getBBox().width);
+  }
 
   var maxWidthHalf = d3.max(widths) / 2 + 12;
 
-  $('svg .axis--x .tick text').each(function(i) {
-    var center = $(this).prev().position().left;
+  for (i = 0; i < x_items.length; ++i) {
+    x_items[i].style.opacity = 0;
+
+    var center = x_lines[i].getBoundingClientRect().left;
 
     if (i == 0 || center - maxWidthHalf > targetRight) {
-      if ($(this).position().left - 12 < targetRight)
-        return true;
-
-      if ($(this).position().left + $(this)[0].getBBox().width > self.element.width())
-        return true;
-
-      targetRight = center + maxWidthHalf;
-      return $(this).css('opacity', 1);
+      if (x_items[i].getBoundingClientRect().left - 12 < targetRight) {
+        
+      } else if (x_items[i].getBoundingClientRect().left + x_items[i].getBBox().width > self.width) {
+        
+      } else {
+        targetRight = center + maxWidthHalf;
+        x_items[i].style.opacity = 1;
+      }
     }
-  });
-
-  $('.domain').remove();
+  }
 
   self.lineGraph(this.data);
-
-  if (window.callPhantom)
-    window.callPhantom('takeShot');
 }
 
 Graph.prototype.lineGraph = function(data) {
@@ -151,3 +152,6 @@ Graph.prototype.lineGraph = function(data) {
       "stroke-linejoin": 'round'
     });
 }
+
+var graph = new Graph();
+graph.draw();
