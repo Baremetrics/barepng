@@ -4,10 +4,10 @@ var fs = Npm.require('fs');
 var spawn = Npm.require('child_process').spawn;
 
 Meteor.methods({
-  phantom: function(data) {
+  phantom: function(query, w, h) {
     var future = new Future;
 
-    command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', data]);
+    command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', query, w, h]);
 
     command.stdout.on('data', function(data) {
       // console.log('stdeout: '+ data);

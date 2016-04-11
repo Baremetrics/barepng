@@ -12,9 +12,16 @@ Router.route('/', {
     'access-control-allow-origin': '*',
     'Content-Type': 'image/png'
   });
-  var start = new Date().getTime();
-  var file = Meteor.call('phantom', this.request.query.data);
+  // var start = new Date().getTime();
+  var query = "";
 
-  console.log(new Date().getTime() - start +'/ms');
+  for (var key in this.request.query) {
+    if (query != "") query += "&";
+    query += key + "=" + this.request.query[key];
+  }
+
+  var file = Meteor.call('phantom', query, this.request.query.w || 800, this.request.query.h || 400);
+
+  // console.log(new Date().getTime() - start +'/ms');
   this.response.end(file, 'base64');
 });
