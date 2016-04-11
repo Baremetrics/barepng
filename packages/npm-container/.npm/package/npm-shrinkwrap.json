@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "phantomjs-prebuilt": {
-      "version": "2.1.6",
+      "version": "2.1.7",
       "dependencies": {
         "extract-zip": {
           "version": "1.5.0",
@@ -132,7 +132,7 @@
               "version": "1.0.1"
             },
             "pinkie-promise": {
-              "version": "2.0.0",
+              "version": "2.0.1",
               "dependencies": {
                 "pinkie": {
                   "version": "2.0.4"
@@ -256,7 +256,7 @@
                       "version": "0.1.0"
                     },
                     "tweetnacl": {
-                      "version": "0.14.1"
+                      "version": "0.14.3"
                     },
                     "jodid25519": {
                       "version": "1.0.2"
@@ -312,15 +312,10 @@
               "version": "2.0.6",
               "dependencies": {
                 "chalk": {
-                  "version": "1.1.1",
+                  "version": "1.1.3",
                   "dependencies": {
                     "ansi-styles": {
-                      "version": "2.2.0",
-                      "dependencies": {
-                        "color-convert": {
-                          "version": "1.0.0"
-                        }
-                      }
+                      "version": "2.2.1"
                     },
                     "escape-string-regexp": {
                       "version": "1.0.5"
@@ -377,7 +372,7 @@
                   }
                 },
                 "pinkie-promise": {
-                  "version": "2.0.0",
+                  "version": "2.0.1",
                   "dependencies": {
                     "pinkie": {
                       "version": "2.0.4"
