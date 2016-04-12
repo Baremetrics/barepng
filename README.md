@@ -29,7 +29,7 @@ h=400
 
 ## Slack keys
 **`symbol`**
-> `String`. Symbol for the x axis labels. Default is `null`
+> `String`. Symbol for the x axis labels. Default is `''`
 
 ```js
 symbol=%25
@@ -51,7 +51,7 @@ email=true
 ```
 
 **`goal`**
-> `Array` of arrays. Only two though, a start and end as a goal has definite start and end points
+> `Array` of arrays. Likely only two though as a goal has definite start and end *(note you will need to do the logic yourself to clamp the dates within the `data` range to ensure the goal doesn't extend beyond or before the existing date range. Be sure and do the math for the amounts on any new start/end dates!!)*
 
 ```js
 goal=[[1456358399000,42991],[1458777599000,44741]]
