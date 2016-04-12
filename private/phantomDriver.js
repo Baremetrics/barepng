@@ -1,6 +1,7 @@
 var page = require('webpage').create();
 var args = require('system').args;
 var address = 'https://dashboard.baremetrics.com/chart?'+ args[1];
+// var address = 'http://localhost:3000/chart?'+ args[1];
 
 page.viewportSize = {
   width: args[2],

@@ -8,10 +8,6 @@ Router.route('/', {
   where: 'server'
 })
 .get(function() {
-  this.response.writeHead(200, {
-    'access-control-allow-origin': '*',
-    'Content-Type': 'image/png'
-  });
   // var start = new Date().getTime();
   var query = "";
 
@@ -23,5 +19,9 @@ Router.route('/', {
   var file = Meteor.call('phantom', query, this.request.query.w || 800, this.request.query.h || 400);
 
   // console.log(new Date().getTime() - start +'/ms');
+  this.response.writeHead(200, {
+    'access-control-allow-origin': '*',
+    'Content-Type': 'image/png'
+  });
   this.response.end(file, 'base64');
 });
