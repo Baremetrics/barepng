@@ -4,16 +4,25 @@ var fs = Npm.require('fs');
 var spawn = Npm.require('child_process').spawn;
 
 Meteor.methods({
-  phantom: function(query, w, h) {
+  phantom: function(query) {
     var future = new Future;
 
-    command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', query, w, h]);
+    var width = query.w || 800;
+    var height = query.h || 400;
+    var query_string = "";
+
+    for (var key in query) {
+      if (query_string != "") query_string += "&";
+      query_string += key + "=" + query[key];
+    }
+
+    command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', query_string, width, height]);
 
     command.stdout.on('data', function(data) {
-      // console.log('stdeout: '+ data);
+      console.log('stdeout: '+ data);
     });
     command.stderr.on('data', function(data) {
-      // console.log('stderr: '+ data);
+      console.log('stderr: '+ data);
       future.throw(error);
     });
     command.on('exit', function(code) {

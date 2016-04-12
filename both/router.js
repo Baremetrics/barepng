@@ -9,16 +9,10 @@ Router.route('/', {
 })
 .get(function() {
   // var start = new Date().getTime();
-  var query = "";
-
-  for (var key in this.request.query) {
-    if (query != "") query += "&";
-    query += key + "=" + this.request.query[key];
-  }
-
-  var file = Meteor.call('phantom', query, this.request.query.w || 800, this.request.query.h || 400);
+  var file = Meteor.call('phantom', this.request.query);
 
   // console.log(new Date().getTime() - start +'/ms');
+  
   this.response.writeHead(200, {
     'access-control-allow-origin': '*',
     'Content-Type': 'image/png'
