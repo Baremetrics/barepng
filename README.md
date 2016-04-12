@@ -14,28 +14,29 @@ data=[[1456358399000,43991],[1456444799000,44192],[1456531199000,44289],[1456617
 ```
 
 **`w`**
-> `Number`. Default is `800`
+> `Number`. Width of the generated graph and image. Default is `800`
 
 ```js
 w=800
 ```
 
 **`h`**
-> `Number`. Default is `400`
+> `Number`. Height of the generated graph and image. Default is `400`
 
 ```js
 h=400
 ```
 
+## Slack keys
 **`symbol`**
-> `String`. Default is `null`
+> `String`. Symbol for the x axis labels. Default is `null`
 
 ```js
 symbol=%25
 ```
 
 **`symbol_first`**
-> `Boolean`. Default is `true`. Set to `false` to move the symbol to the far right
+> `Boolean`. Would you like said symbol as the first or last character? Default is `true`. Set to `false` to move the symbol to the far right
 
 ```js
 symbol_first=false
