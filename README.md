@@ -1,5 +1,7 @@
 # BarePNG
 > Generate PNGs from Baremetrics SVGs
+>
+> `?start=14579804&step=864&data=43991,101,47,78,-14,-30,-5,12,9,-3&symbol=$^&w=600&h=250&email=1&goal=14579804,43891,14587580,44271`
 
 Source: https://dashboard.baremetrics.com/chart  
 Base:   https://barepng.herokuapp.com  

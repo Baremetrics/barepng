@@ -1,4 +1,4 @@
-Graph.svg2png = function(callback) {
+Graph.prototype.svg2png = function(callback) {
 
   // Snag all the documents stylesheets
   var styleDefs = "";
