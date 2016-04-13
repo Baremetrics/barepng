@@ -1,62 +1,83 @@
-# BarePNG
+# BarePNG – V2
 > Generate PNGs from Baremetrics SVGs
->
-> `?start=14579804&step=864&data=43991,101,47,78,-14,-30,-5,12,9,-3&symbol=$^&w=800&h=500&email=1&goal=14578940,43891,14588444,44271`
 
-Source: https://dashboard.baremetrics.com/chart  
+Source: https://dashboard.baremetrics.com/chart/v2  
 Base:   https://barepng.herokuapp.com  
 CDN:    https://chart.baremetricscdn.com  
 
 ## Base keys
 **`data`**
-> `Array` of arrays
+> String of comma separated values starting with an initial value and proceeding with additional values which will be added on to the proceeding value (i.e `data=100,50,-10` // 100, 150, 140)
 
 ```js
-data=[[1456358399000,43991],[1456444799000,44192],[1456531199000,44289],[1456617599000,44367],[1456703999000,44413],[1456790399000,44443],[1456876799000,44791],[1456963199000,44789],[1457049599000,45138],[1457135999000,45173],[1457222399000,45159],[1457308799000,45191],[1457395199000,45372],[1457481599000,45357],[1457567999000,45408],[1457654399000,45458],[1457740799000,45845],[1457827199000,45889],[1457913599000,45939],[1457999999000,45983],[1458086399000,46054],[1458172799000,45443],[1458259199000,45707],[1458345599000,45170],[1458431999000,45301],[1458518399000,45298],[1458604799000,45384],[1458691199000,45741],[1458777599000,45741]]
+data=43991,101,47,78,-14,-30,-5,12,9,-3
+```
+
+**`start`**
+> 8 digit number to start the graph on, will be added unto just like data with the `step` value 
+
+```js
+// Math.round(new Date().getTime()/100000)
+start=14579804
+```
+
+**`step`**
+> Number to add onto the iteration from the `start` value. Default is `864`, one day
+
+```js
+// day = 864
+// week = 6048
+// 30 day = 25920
+step=864
 ```
 
 **`w`**
-> `Number`. Width of the generated graph and image. Default is `800`
+> Number width of the generated graph and image. Default is `800`
 
 ```js
 w=800
 ```
 
 **`h`**
-> `Number`. Height of the generated graph and image. Default is `400`
+> Number height of the generated graph and image. Default is `400`
 
 ```js
 h=400
 ```
 
-## Slack keys
-**`symbol`**
-> `String`. Symbol for the x axis labels. Default is `''`
+**`style`**
+> Select the graph style. Default is.. well.. default
 
-```js
-symbol=%25
+```
+// default, email
+style=email
 ```
 
-**`symbol_first`**
-> `Boolean`. Would you like said symbol as the first or last character? Default is `true`. Set to `false` to move the symbol to the far right
+## Default keys
+**`symbol`**
+> `String`. Symbol and placement for the x axis labels. Pretend the `^` is your number, cause that's where it will show up. Default is `''`
 
 ```js
-symbol_first=false
+symbol=^% // 45%
+symbol=$^ // $1,000
 ```
 
 ## Email keys
-**`email`**
-> `Boolean`. Set to `true` to switch SVG styling to it's email version counterpart
-
-```js
-email=true
-```
-
 **`goal`**
-> `Array` of arrays. Likely only two though as a goal has definite start and end  
+> Create a goal line for your email graph by sending the start date, start value, end date and end value. 
 >  
-> **note you will need to do the logic yourself to clamp the dates within the `data` range to ensure the goal doesn't extend beyond or before the existing date range. Be sure and do the math for the amounts on any new start/end dates!!*
+> **note this is a little different then the data key as all four values are their actual final values and not values which will be added onto inside a loop*
 
 ```js
-goal=[[1456358399000,42991],[1458777599000,44741]]
+goal=14578940,43891,14588444,44271
 ```
+
+## Example URLs
+> Base "Slack" graph
+> `?v=2&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&symbol=$^`
+>
+> Base "Email" w/goal
+> `?v=2&style=email&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&w=600&h=250&goal=14578940,43891,14588444,44271`
+>
+> Nice large % based graph with 7 day (week) steps
+> `?v=2&start=14579804&step=6048&data=0,100&w=1200&h=600&symbol=^%`
