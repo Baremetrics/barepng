@@ -93,12 +93,8 @@ Graph = function() {
     return [self.dates[i], self.amounts[i]];
   });
 
-  this.goal = this.clampGoal(this.object.goal);
-
-  if (this.object.goal && this.object.email) {
-    this.dates.push(this.object.goal[0] * 100000, this.object.goal[2] * 100000);
-    this.amounts.push(this.object.goal[1], this.object.goal[3]);
-  }
+  if (this.object.goal && this.object.email)
+    this.goal = this.clampGoal(this.object.goal);
 
   this.svg = d3.select('svg')
     .attr({
@@ -116,34 +112,33 @@ Graph = function() {
 }
 
 Graph.prototype.clampGoal = function(data) {
+  var start = d3.min(this.dates);
+  var end = d3.max(this.dates);
+  
   var start_date = data[0] * 100000;
   var start_amount = data[1];
   var end_date = data[2] * 100000;
   var end_amount = data[3];
 
-  // var r = (end_date - start_date) / this.object.step / 100000 + 1;
+  if (end_date <= start || start_date >= end) {
+    this.object.goal = null;
+    return false;
+  }
 
-  // if (start_date < d3.min(this.dates)) {
-  //   start_date = d3.min(this.dates);
-  //   start_amount = start_amount + ((end_amount - start_amount) / r);
-  // }
+  var r = (end_amount - start_amount) / (end_date - start_date);
 
-  // if (end_date > d3.max(this.dates)) {
-  //   end_date = d3.max(this.dates);
-  //   end_amount = end_amount - ((end_amount - start_amount) / r);
-  // }
+  if (start_date < start) {
+    start_amount = start_amount + (start - start_date) * r;
+    start_date = start;
+  }
 
-  // var r = (end_amount - start_amount) / (end_date - start_date) / this.object.step / 100000 + 1;
+  if (end_date > end) {
+    end_amount = end_amount + (end - end_date) * r;
+    end_date = end;
+  }
 
-  // if (start_date < d3.min(this.dates)) {
-  //   start_date = d3.min(this.dates);
-  //   start_amount = start_amount + r;
-  // }
-
-  // if (end_date > d3.max(this.dates)) {
-  //   end_date = d3.max(this.dates);
-  //   end_amount = end_amount - r;
-  // }
+  this.dates.push(start_date, end_date);
+  this.amounts.push(start_amount, end_amount);
 
   return [[start_date, start_amount], [end_date, end_amount]];
 }
