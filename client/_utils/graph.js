@@ -3,16 +3,8 @@ Graph = function() {
 
   this.object = this.getQueryParameters(window.location.search);
 
-  if (!this.object.data) {
+  if (!this.object.data)
     this.object.data = '[0,100]';
-    this.object.start = Math.round(new Date().getTime() / 100000) - 25056;
-    this.object.step = 864;
-    this.object.goal = null;
-    this.object.symbol = '^%25';
-    this.object.style = 'default';
-    this.object.w = 800;
-    this.object.h = 400;
-  }
 
   if (!this.object.start)
     this.object.start = Math.round(new Date().getTime() / 100000) - 25056;
@@ -20,7 +12,7 @@ Graph = function() {
   if (!this.object.step)
     this.object.step = 864;
 
-  if (!this.object.goal || this.object.goal == '0')
+  if (!this.object.goal)
     this.object.goal = null;
 
   if (!this.object.symbol)
