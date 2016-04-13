@@ -7,10 +7,10 @@ CDN:    https://chart.baremetricscdn.com
 
 ## Base keys
 **`data`**
-> String of comma separated values starting with an initial value and proceeding with additional values which will be added on to the proceeding value (i.e `data=100,50,-10` // 100, 150, 140)
+> `Array` of values starting with an initial value and proceeding with additional values which will be added on to the previous summarized value (i.e `data=100,50,-10` // 100, 150, 140)
 
 ```js
-data=43991,101,47,78,-14,-30,-5,12,9,-3
+data=[43991,101,47,78,-14,-30,-5,12,9,-3]
 ```
 
 **`start`**
@@ -64,29 +64,29 @@ symbol=$^ // $1,000
 
 ## Email keys
 **`goal`**
-> Create a goal line for your email graph by sending the start date, start value, end date and end value. 
+> Array for creating a goal line for your email graph by sending the start date, start value, end date and end value. 
 >  
 > **note this is a little different then the data key as all four values are their actual final values and not values which will be added onto inside a loop*
 
 ```js
-goal=14578940,43891,14588444,44271
+goal=[14578940,43891,14588444,44271]
 ```
 
 ## Example URLs
 > Base "Slack" graph
 
 ```
-?v=2&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&symbol=$^
+?v=2&start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&symbol=$^
 ```
 
 > Base "Email" w/goal
 
 ```
-?v=2&style=email&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&w=600&h=250&goal=14578940,43891,14588444,44271
+?v=2&style=email&start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&w=600&h=250&goal=[14578940,43891,14588444,44271]
 ```
 
 > Nice large % based graph with 7 day (week) steps
 
 ```
-?v=2&start=14579804&step=6048&data=0,100&w=1200&h=600&symbol=^%
+?v=2&start=14579804&step=6048&data=[0,100]&w=1200&h=600&symbol=^%
 ```

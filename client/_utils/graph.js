@@ -4,10 +4,10 @@ Graph = function() {
   this.object = this.getQueryParameters(window.location.search);
 
   if (!this.object.data) {
-    this.object.data = '0,100';
+    this.object.data = '[0,100]';
     this.object.start = Math.round(new Date().getTime() / 100000) - 25056;
     this.object.step = 864;
-    this.object.goal = 0;
+    this.object.goal = null;
     this.object.symbol = '^%25';
     this.object.style = 'default';
     this.object.w = 800;
@@ -20,8 +20,8 @@ Graph = function() {
   if (!this.object.step)
     this.object.step = 864;
 
-  if (!this.object.goal)
-    this.object.goal = 0;
+  if (!this.object.goal || this.object.goal == '0')
+    this.object.goal = null;
 
   if (!this.object.symbol)
     this.object.symbol = '';
@@ -39,14 +39,7 @@ Graph = function() {
     switch (key) {
       case 'data':
       case 'goal':
-        var arr = this.object[key] ? this.object[key].split(',') : [];
-        if (arr.length > 1) {
-          this.object[key] = arr.map(function(d) {
-            return Number(d);
-          });
-        } else {
-          this.object[key] = null;
-        }
+        this.object[key] = JSON.parse(this.object[key]);
         break;
 
       case 'start':
@@ -57,6 +50,7 @@ Graph = function() {
         break;
 
       case 'style':
+        this.object[key] = this.object[key] == 'email' ? 'email' : 'default';
         break;
 
       case 'symbol':
