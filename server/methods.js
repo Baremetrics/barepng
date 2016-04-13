@@ -1,22 +1,28 @@
-var phantomjs = Meteor.npmRequire('phantomjs-prebuilt');
-var Future = Npm.require('fibers/future');
-var fs = Npm.require('fs');
-var spawn = Npm.require('child_process').spawn;
+var phantomjs = Meteor.npmRequire('phantomjs-prebuilt'),
+    Future = Npm.require('fibers/future'),
+    fs = Npm.require('fs'),
+    spawn = Npm.require('child_process').spawn;
 
 Meteor.methods({
   phantom: function(query) {
-    var future = new Future;
+    var future = new Future,
+        width = query.w || 800,
+        height = query.h || 400,
+        query_string = "",
+        version;
 
-    var width = query.w || 800;
-    var height = query.h || 400;
-    var query_string = "";
+    if (query.v == 2) {
+      query_string += '/v2?';
+    } else {
+      query_string += '?';
+    }
 
     for (var key in query) {
       if (query_string != "") query_string += "&";
       query_string += key + "=" + query[key];
     }
 
-    command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', query_string, width, height]);
+    command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', query_string, width, height, version]);
 
     command.stdout.on('data', function(data) {
       console.log('stdeout: '+ data);
