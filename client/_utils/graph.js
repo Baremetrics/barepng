@@ -9,7 +9,7 @@ Graph = function() {
     this.object.step = 864;
     this.object.goal = 0;
     this.object.symbol = '^%25';
-    this.object.email = 0;
+    this.object.style = 'default';
     this.object.w = 800;
     this.object.h = 400;
   }
@@ -26,8 +26,8 @@ Graph = function() {
   if (!this.object.symbol)
     this.object.symbol = '';
 
-  if (!this.object.email)
-    this.object.email = 0;
+  if (!this.object.style)
+    this.object.style = 'default';
 
   if (!this.object.w)
     this.object.w = 800;
@@ -56,8 +56,7 @@ Graph = function() {
         this.object[key] = Number(this.object[key]);
         break;
 
-      case 'email':
-        this.object[key] = this.object[key] == 1;
+      case 'style':
         break;
 
       case 'symbol':
@@ -93,12 +92,12 @@ Graph = function() {
     return [self.dates[i], self.amounts[i]];
   });
 
-  if (this.object.goal && this.object.email)
+  if (this.object.goal && this.object.style == 'email')
     this.goal = this.clampGoal(this.object.goal);
 
   this.svg = d3.select('svg')
     .attr({
-      'class': this.object.email ? 'email' : '',
+      'class': this.object.style,
       height: this.object.h,
       width: this.object.w
     });
@@ -168,7 +167,7 @@ Graph.prototype.parseValue = function(raw) {
 Graph.prototype.draw = function() {
   var self = this;
 
-  if (this.object.email) {
+  if (this.object.style == 'email') {
     this.yScale = d3.scale.linear()
       .domain(d3.extent(this.amounts))
       .range([this.object.h - (this.object.goal ? 75 : 27), 3]);
@@ -276,7 +275,7 @@ Graph.prototype.lineGraph = function() {
 
   var area = d3.svg.area()
     .x(function(d) {return self.xScale(d[0])})
-    .y0(this.object.h - (self.object.email ? 0 : 48))
+    .y0(this.object.h - (self.object.style == 'email' ? 0 : 48))
     .y1(function(d) {return self.yScale(d[1])});
 
   this.svg.append('path')
@@ -301,7 +300,7 @@ Graph.prototype.lineGraph = function() {
       "stroke-linejoin": 'round'
     });
 
-  if (this.object.goal && this.object.email) {
+  if (this.object.goal && this.object.style == 'email') {
     var goal_line = d3.svg.line()
       .x(function(d) {return self.xScale(d[0])})
       .y(function(d) {return self.yScale(d[1])});
