@@ -48,7 +48,7 @@ h=400
 **`style`**
 > Select the graph style. Default is.. well.. default
 
-```
+```js
 // default, email
 style=email
 ```
@@ -73,11 +73,11 @@ goal=14578940,43891,14588444,44271
 ```
 
 ## Example URLs
-> Base "Slack" graph
-> `?v=2&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&symbol=$^`
+> Base "Slack" graph  
+> ```?v=2&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&symbol=$^```
 >
-> Base "Email" w/goal
-> `?v=2&style=email&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&w=600&h=250&goal=14578940,43891,14588444,44271`
+> Base "Email" w/goal  
+> ```?v=2&style=email&start=14579804&data=43991,101,47,78,-14,-30,-5,12,9,-3&w=600&h=250&goal=14578940,43891,14588444,44271```
 >
-> Nice large % based graph with 7 day (week) steps
-> `?v=2&start=14579804&step=6048&data=0,100&w=1200&h=600&symbol=^%`
+> Nice large % based graph with 7 day (week) steps  
+> ```?v=2&start=14579804&step=6048&data=0,100&w=1200&h=600&symbol=^%```
