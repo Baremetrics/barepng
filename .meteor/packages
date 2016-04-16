@@ -23,3 +23,6 @@ meteorhacks:npm
 npm-container
 d3js:d3
 meteorhacks:kadira
+meteorhacks:zones
+meteorhacks:kadira-profiler
+kadira:debug
