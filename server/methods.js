@@ -4,25 +4,31 @@ var phantomjs = Meteor.npmRequire('phantomjs-prebuilt'),
     spawn = Npm.require('child_process').spawn;
 
 Meteor.methods({
-  phantom: function(query) {
+  phantom: function(query, header) {
     var future = new Future,
         width = query.w || 800,
         height = query.h || 400,
         query_string = "",
-        version;
-
-    if (query.v == 2) {
-      query_string += '/v2?';
-    } else {
-      query_string += '?';
-    }
+        address;
 
     for (var key in query) {
       if (query_string != "") query_string += "&";
       query_string += key + "=" + query[key];
     }
 
-    command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', query_string, width, height, version]);
+    if (query.url && header) {
+      address = header['x-forwarded-proto'] +'://'+ header.host +'/chart';
+    } else {
+      address = 'https://dashboard.baremetrics.com/chart';
+    }
+
+    if (query.v == 2) {
+      address += '/v2?'+ query_string;
+    } else {
+      address += '?'+ query_string;
+    }
+
+    var command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', address, width, height]);
 
     command.stdout.on('data', function(data) {
       console.log('stdeout: '+ data);

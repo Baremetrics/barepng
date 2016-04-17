@@ -156,7 +156,7 @@ Graph.prototype.draw = function() {
   if (this.object.style == 'email') {
     this.yScale = d3.scale.linear()
       .domain(d3.extent(this.amounts))
-      .range([this.object.h - (this.object.goal ? 75 : 27), 3]);
+      .range([this.object.h - (this.object.goal ? 87 : 27), 3]);
 
     this.xScale = d3.scale.linear()
       .domain(d3.extent(this.dates))

@@ -9,10 +9,10 @@ Router.route('/', {
 })
 .get(function() {
   // var start = new Date().getTime();
-  var file = Meteor.call('phantom', this.request.query);
+  var file = Meteor.call('phantom', this.request.query, this.request.headers);
 
   // console.log(new Date().getTime() - start +'/ms');
-  
+
   this.response.writeHead(200, {
     'access-control-allow-origin': '*',
     'Content-Type': 'image/png'

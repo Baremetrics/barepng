@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
+  font-size: 18px;
 }
 .graph {
   position: relative;
@@ -9,7 +10,7 @@ body {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-size: 15px;
+  // font-size: 16px;
   display: none;
 
   .key:before {

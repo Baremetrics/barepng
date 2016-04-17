@@ -1,8 +1,5 @@
 var page = require('webpage').create(),
-    system = require('system'),
-    address = 'https://dashboard.baremetrics.com/chart'+ system.args[1];
-
-// address = 'http://localhost:3000/chart'+ system.args[1];
+    system = require('system');
 
 page.viewportSize = {
   width: system.args[2],
@@ -16,7 +13,7 @@ page.clipRect = {
   height: system.args[3]
 };
 
-page.open(address, function(status) {
+page.open(system.args[1], function(status) {
   if (status !== 'success') {
     console.log('Unable to access network');
   } else {
