@@ -16,7 +16,7 @@ Utils.prototype.insertImage = function(version) {
   });
 
   if (version == 3) {
-    return $('<img src="'+ window.location.origin +'?v=3&data=['+ data +']&symbol=$^&w=800&h=400">');
+    return $('<img src="'+ window.location.origin +'/api?v=3&data=['+ data +']&symbol=$^&w=800&h=400">');
   } else {
     return $('<img src="https://chart.baremetricscdn.com/?v=2&data=['+ data +']&symbol=$^&w=800&h=400">');
   }
@@ -26,7 +26,7 @@ Utils.prototype.insertImages = function(i, version) {
   var self = this;
 
   _.each(_.range(i), function() {
-    $('body').after(self.insertImage(version));
+    $('.images').prepend(self.insertImage(version));
   });
 }
 

@@ -1,3 +1,0 @@
-Template.public.rendered = function() {
-
-}

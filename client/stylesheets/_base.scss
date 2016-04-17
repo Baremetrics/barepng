@@ -3,8 +3,15 @@ body {
   font-weight: 800;
   font-size: 18px;
 }
-img {
-  display: block;
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  img {
+    display: block;
+    width: calc(100% / 3);
+  }
 }
 .graph {
   position: relative;
