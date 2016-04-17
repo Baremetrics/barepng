@@ -1,19 +1,22 @@
 var page = require('webpage').create(),
-    system = require('system');
+    system = require('system'),
+    address = system.args[1],
+    width = system.args[2],
+    height = system.args[3];
 
 page.viewportSize = {
-  width: system.args[2],
-  height: system.args[3]
+  width: width,
+  height: height
 }
 
 page.clipRect = {
   top: 0, 
   left: 0, 
-  width: system.args[2],
-  height: system.args[3]
+  width: width,
+  height: height
 };
 
-page.open(system.args[1], function(status) {
+page.open(address, function(status) {
   if (status !== 'success') {
     console.log('Unable to access network');
   } else {

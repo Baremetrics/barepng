@@ -9,7 +9,11 @@ Router.route('/', {
 })
 .get(function() {
   // var start = new Date().getTime();
-  var file = Meteor.call('phantom', this.request.query, this.request.headers);
+  var file = Meteor.call('phantom', {
+    query: this.request.query,
+    proto: this.request.headers['x-forwarded-proto'],
+    host: this.request.headers.host
+  });
 
   // console.log(new Date().getTime() - start +'/ms');
 

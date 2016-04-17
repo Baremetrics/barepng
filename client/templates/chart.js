@@ -3,10 +3,10 @@ Template.chart.rendered = function() {
   graph.draw();
 }
 
-Template.chart.events({
+// Template.chart.events({
   
-});
+// });
 
-Template.chart.helpers({
+// Template.chart.helpers({
   
-});
+// });

@@ -4,27 +4,23 @@ var phantomjs = Meteor.npmRequire('phantomjs-prebuilt'),
     spawn = Npm.require('child_process').spawn;
 
 Meteor.methods({
-  phantom: function(query, header) {
+  phantom: function(request) {
     var future = new Future,
-        width = query.w || 800,
-        height = query.h || 400,
+        width = request.query.w || 800,
+        height = request.query.h || 400,
         query_string = "",
-        address;
+        address = 'https://dashboard.baremetrics.com/chart';
 
-    for (var key in query) {
+    for (var key in request.query) {
       if (query_string != "") query_string += "&";
-      query_string += key + "=" + query[key];
+      query_string += key + "=" + request.query[key];
     }
 
-    if (query.url && header) {
-      address = header['x-forwarded-proto'] +'://'+ header.host +'/chart';
-    } else {
-      address = 'https://dashboard.baremetrics.com/chart';
-    }
-
-    if (query.v == 2) {
+    if (request.query.v == 3) { // Self contained version
+      address = request.proto +'://'+ request.host +'/chart';
+    } else if (request.query.v == 2) { // New Email version
       address += '/v2?'+ query_string;
-    } else {
+    } else { // Old Slack version
       address += '?'+ query_string;
     }
 
