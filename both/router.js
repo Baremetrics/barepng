@@ -4,6 +4,8 @@ Router.configure({
 
 Router.route('/chart', {name: 'chart'});
 
+Router.route('/public', {name: 'public'});
+
 Router.route('/', {
   where: 'server'
 })

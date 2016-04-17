@@ -1,0 +1,3 @@
+Template.public.rendered = function() {
+
+}
