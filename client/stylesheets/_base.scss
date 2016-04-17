@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 18px;
 }
 .graph {
@@ -10,7 +10,7 @@ body {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  // font-size: 16px;
+  letter-spacing: 0.03rem;
   display: none;
 
   .key:before {
@@ -46,7 +46,7 @@ svg {
   text {
     fill: $white;
     font-family: 'Roboto', sans-serif;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.03rem;
   }
   .area {
