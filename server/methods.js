@@ -17,7 +17,7 @@ Meteor.methods({
     }
 
     if (request.query.v == 3) { // Self contained version
-      address = request.proto +'://'+ request.host +'/chart';
+      address = request.proto +'://'+ request.host +'/chart?'+ query_string;
     } else if (request.query.v == 2) { // New Email version
       address += '/v2?'+ query_string;
     } else { // Old Slack version
