@@ -31,7 +31,7 @@ Meteor.methods({
     });
     command.stderr.on('data', function(data) {
       console.log('stderr: '+ data);
-      future.throw(error);
+      future.throw(data);
     });
     command.on('exit', function(code) {
       // console.log('child process exited with code '+ code);
