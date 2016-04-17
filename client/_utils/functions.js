@@ -2,7 +2,7 @@ Utils = function() {
 
 }
 
-Utils.prototype.insertImage = function() {
+Utils.prototype.insertImage = function(version) {
   var start;
 
   var data = _.map(_.range(30), function(d, i) {
@@ -15,14 +15,18 @@ Utils.prototype.insertImage = function() {
     return start;
   });
 
-  return $('<img src="'+ window.location.origin +'?v=3&data=['+ data +']&symbol=$^&w=800&h=400">');
+  if (version == 3) {
+    return $('<img src="'+ window.location.origin +'?v=3&data=['+ data +']&symbol=$^&w=800&h=400">');
+  } else {
+    return $('<img src="https://chart.baremetricscdn.com/?v=2&data=['+ data +']&symbol=$^&w=800&h=400">');
+  }
 }
 
-Utils.prototype.insertImages = function(i) {
+Utils.prototype.insertImages = function(i, version) {
   var self = this;
-  
+
   _.each(_.range(i), function() {
-    $('body').after(self.insertImage());
+    $('body').after(self.insertImage(version));
   });
 }
 
