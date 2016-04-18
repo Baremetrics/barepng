@@ -1,0 +1,24 @@
+{
+  "name": "BarePNG",
+  "description": "Create PNGs from Baremetrics SVGs",
+  "website": "https://barepng.herokuapp.com",
+  "repository": "https://github.com/Baremetrics/barepng",
+  "logo": "https://baremetrics.com/slack.png",
+  "keywords": ["graph", "chart", "image", "generator", "converter", "metrics"],
+  "env": {
+    "DISABLE_WEBSOCKETS": true,
+    "ROOT_URL": {
+      "description": "Name of your heroku app",
+      "value": "dez_nuts.herokuapp.com",
+      "required": true
+    }
+  },
+  "addons": [
+    "mongolab:sandbox"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/AdmitHub/meteor-buildpack-horse.git"
+    }
+  ]
+}

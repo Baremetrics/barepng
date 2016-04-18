@@ -42,7 +42,7 @@ Template.home.events({
     $('.image img').load(function(){
       $('.generate, .image').removeClass('loading');
 
-      Meteor.call('googleURL', url, function(error, result) {
+      Meteor.call('gurl', url, function(error, result) {
         if (error) { 
           console.log(error); 
           $('.url').html('URL Generator Failed');

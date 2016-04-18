@@ -1,8 +1,9 @@
-var GoogleURL = Meteor.npmRequire('google-url'),
-    phantomjs = Meteor.npmRequire('phantomjs-prebuilt'),
+var gURL = Meteor.npmRequire('google-url'),
+    phantomJS = Meteor.npmRequire('phantomjs-prebuilt'),
     Future = Npm.require('fibers/future'),
     fs = Npm.require('fs'),
-    spawn = Npm.require('child_process').spawn;
+    spawn = Npm.require('child_process').spawn,
+    gurl = new gURL({key:'AIzaSyC5t3jmwQcMBOr1PLTcyxD9pwwt2dFAl-4'});
 
 Meteor.methods({
   phantom: function(request) {
@@ -19,7 +20,7 @@ Meteor.methods({
 
     address = request.proto +'://'+ request.host +'/chart?'+ query_string;
 
-    var command = spawn(phantomjs.path, ['assets/app/phantomDriver.js', address, width, height]);
+    var command = spawn(phantomJS.path, ['assets/app/phantomDriver.js', address, width, height]);
 
     command.stdout.on('data', function(data) {
       console.log('stdeout: '+ data);
@@ -35,11 +36,10 @@ Meteor.methods({
 
     return future.wait();
   },
-  googleURL: function(url) {
+  gurl: function(url) {
     var future = new Future();
-    var googleURL = new GoogleURL({key: 'AIzaSyC5t3jmwQcMBOr1PLTcyxD9pwwt2dFAl-4'});
-
-    googleURL.shorten(url, function(err, shortURL) {
+    
+    gurl.shorten(url, function(err, shortURL) {
       if (err) {
         future.throw(err);
       } else {
