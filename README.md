@@ -1,4 +1,4 @@
-# [Baremetrics](https://baremetrics.com/) BarePNG [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+# [Baremetrics](https://baremetrics.com/) BarePNG [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://github.com/baremetrics/barepng/tree/public)
 _[Baremetrics](https://baremetrics.com) provides one-click analytics & insights for Stripe. **[Get started today!](https://baremetrics.com)**_
 
 Built by [Tyler van der Hoeven](https://github.com/tyvdh)
