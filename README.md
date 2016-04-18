@@ -9,7 +9,7 @@ The app itself is actually very simple. We have one page at `/chart` that hosts 
 With that page in place all we have to do is call the `/api` url with the appropriate queries and PhantomJS will take care of the rest.
 
 Just look! `https://barepng.herokuapp.com/api?start=14579804&data=[0,100]&symbol=^%`
-![BarePNG Image](https://barepng.herokuapp.com/api?start=14579804&data=[0,100]&symbol=^%)
+![BarePNG Image](https://barepng.herokuapp.com/api?start=14579804&data=[0,100]&symbol=^%25)
 
 ## Base keys
 **`data`**
