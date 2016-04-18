@@ -1,0 +1,74 @@
+.graph {
+  position: relative;
+}
+.legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  letter-spacing: 0.03rem;
+  display: none;
+  font-size: 16px;
+
+  .key:before {
+    content: '';
+    width: 20px;
+    height: 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 6px;
+    position: relative;
+    top: -2px;
+  }
+  .actual {
+    color: $blue;
+    margin-bottom: 10px;
+
+    &:before {
+      background-color: $blue;
+    }
+  }
+  .goal {
+    color: $green;
+
+    &:before {
+      background-color: $green;
+    }
+  }
+}
+
+svg {
+  background: linear-gradient(to top left, adjust-hue($blue, -15), $blue);
+
+  text {
+    fill: $white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.03rem;
+  }
+  .area {
+    fill: rgba($white, 0.1);
+  }
+  .line {
+    stroke: $white;
+  }
+  .tick line {
+    stroke: rgba($white, 0.1);
+  }
+  .axis--x .tick:last-of-type text {
+    text-anchor: end !important;
+  }
+}
+
+svg.email {
+  background: none;
+
+  .area {
+    fill: $mite;
+  }
+  .line {
+    stroke: $blue;
+  }
+  .goal-line {
+    stroke: $green;
+  }
+}

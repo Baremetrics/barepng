@@ -1,5 +1,55 @@
 <template name="home">
-  <div class="images">
-    
+  <div class="content">
+    <div class="data">
+      <div class="entry">
+        <h5 class="title">Start</h5>
+        <div class="field" data-key="start" contenteditable>{{start}}</div>
+      </div>
+
+      <div class="entry">
+        <h5 class="title">Step</h5>
+        <div class="field" data-key="step" contenteditable>{{step}}</div>
+      </div>
+
+      <div class="entry">
+        <h5 class="title">Data</h5>
+        <div class="field" data-key="data" contenteditable>{{data}}</div>
+      </div>
+
+      <div class="entry">
+        <h5 class="title">Style</h5>
+
+        <select class="field field--select" data-key="style">
+          <option value="default" selected>Default</option>
+          <option value="email">Email</option>
+        </select>
+      </div>
+
+      <div class="entry symbol">
+        <h5 class="title">Symbol</h5>
+        <div class="field" data-key="symbol" contenteditable>{{symbol}}</div>
+      </div>
+
+      <div class="entry goal" style="display: none;">
+        <h5 class="title">Goal</h5>
+        <div class="field" data-key="goal" contenteditable>{{goal}}</div>
+      </div>
+
+      <div class="entry">
+        <h5 class="title">Width</h5>
+        <div class="field" data-key="w" contenteditable>{{w}}</div>
+      </div>
+
+      <div class="entry">
+        <h5 class="title">Height</h5>
+        <div class="field" data-key="h" contenteditable>{{h}}</div>
+      </div>
+
+      <div class="generate">Generate Image</div>
+    </div>
+
+    <div class="image">
+      <img src="https://chart.baremetricscdn.com/?v=3&start=14579804&step=864&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&style=default&symbol=$^&goal=[14578940,43891,14588444,44271]&w=800&h=400">
+    </div>
   </div>
 </template>
