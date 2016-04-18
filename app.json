@@ -6,10 +6,14 @@
   "logo": "https://baremetrics.com/slack.png",
   "keywords": ["graph", "chart", "image", "generator", "converter", "metrics"],
   "env": {
-    "DISABLE_WEBSOCKETS": true,
+    "DISABLE_WEBSOCKETS": {
+      "description": "Leaving this true will help you avoid errors if you ever us caching.",
+      "value": "true",
+      "required": true
+    },
     "ROOT_URL": {
-      "description": "Name of your heroku app",
-      "value": "dez_nuts.herokuapp.com",
+      "description": "Name of your app from up above",
+      "value": "name_from_above.herokuapp.com",
       "required": true
     }
   },
