@@ -19,7 +19,7 @@
   },
   "addons": [
     "mongolab:sandbox",
-    "dyno-metadata"
+    "runtime-dyno-metadata"
   ],
   "buildpacks": [
     {
