@@ -23,11 +23,13 @@ body {
     font-size: 5rem;
     width: 100%;
   }
-  span {
+  .logo {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: $black;
 
     img {
       margin: 0 0.5rem;
@@ -37,7 +39,7 @@ body {
 }
 
 .content {
-  padding: 1rem;
+  padding: 0 1rem 2rem;
   color: $white;
   display: flex;
   font-size: 16px;
@@ -161,11 +163,11 @@ body {
 }
 
 .disclaimer {
-  padding: 1rem;
+  padding: 2rem 1rem;
   font-weight: 500;
   line-height: 1.5;
   color: $black;
-  margin-bottom: 1rem;
+  background-color: darken($white, 5%);
 
   a {
     color: rgba($blue, 0.8);
