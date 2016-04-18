@@ -1,24 +1,22 @@
-# BarePNG [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+# [Baremetrics](https://baremetrics.com/) BarePNG [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+_[Baremetrics](https://baremetrics.com) provides one-click analytics & insights for Stripe. **[Get started today!](https://baremetrics.com)**_
 
-BarePNG is a little app we built to turn our Baremetrics SVGs into slick PNGs for our [Slack Bot](https://slack.com/apps/A0PSKV32Q-baremetrics) and now-gorgeous emails. Download, serve and enjoy or just use our little free standing [demo](https://barepng.herokuapp.com) to snag a few quick graph PNGs every now and again.
+Built by [Tyler van der Hoeven](https://github.com/tyvdh)
+
+---
+
+BarePNG is a little app we built to turn our Baremetrics SVGs into slick PNGs for our [Slack Bot](https://slack.com/apps/A0PSKV32Q-baremetrics) and now-gorgeous emails. Download, serve and enjoy or just use our little free standing **[demo](https://barepng.herokuapp.com)** to snag a few quick graph PNGs every now and again.
 
 ## How it works
 
 The app itself is actually very simple. We have one page at `/chart` that hosts the svg, drawn from a small JavaScript file using the url queries.
 
-With that page in place all we have to do is call the `/api` url with the appropriate queries and PhantomJS will take care of the rest.
+With that page in place all we have to do is call the `/api` url with the appropriate queries and [PhantomJS](http://phantomjs.org/) will take care of the rest.
 
 Just look! `https://barepng.herokuapp.com/api?start=14579804&data=[0,10,20,50,20]&symbol=^%25`
 ![BarePNG Image](https://barepng.herokuapp.com/api?start=14579804&data=[0,10,20,50,20]&symbol=^%25)
 
 ## Base keys
-**`data`**
-> `Array` of values starting with an initial value and proceeding with additional values which will be added on to the previous summarized value (i.e `data=100,50,-10` // 100, 150, 140)
-
-```js
-data=[43991,101,47,78,-14,-30,-5,12,9,-3]
-```
-
 **`start`**
 > 8 digit number to start the graph on, will be added unto just like data with the `step` value 
 
@@ -35,6 +33,13 @@ start=14579804
 // week = 6048
 // 30 day = 25920
 step=864
+```
+
+**`data`**
+> `Array` of values starting with an initial value and proceeding with additional values which will be added on to the previous summarized value (i.e `data=100,50,-10` // 100, 150, 140)
+
+```js
+data=[43991,101,47,78,-14,-30,-5,12,9,-3]
 ```
 
 **`w`**
@@ -96,3 +101,7 @@ goal=[14578940,43891,14588444,44271]
 ```
 ?start=14579804&step=6048&data=[0,100]&w=1200&h=600&symbol=^%
 ```
+
+---
+
+It's worth noting that once you're hosting that app there's no reason for you to not completely change the app. Try adding your own keys and CSS for the stuff that shows up at `/chart`. It's your app so make it yours! It's easy!
