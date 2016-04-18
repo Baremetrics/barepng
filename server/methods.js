@@ -3,6 +3,8 @@ var phantomjs = Meteor.npmRequire('phantomjs-prebuilt'),
     fs = Npm.require('fs'),
     spawn = Npm.require('child_process').spawn;
 
+var GoogleURL = Meteor.npmRequire('google-url');
+
 Meteor.methods({
   phantom: function(request) {
     var future = new Future,
@@ -37,6 +39,20 @@ Meteor.methods({
       // console.log('child process exited with code '+ code);
       var png = fs.readFileSync('image.png');
       future.return(new Buffer(png).toString('base64'));
+    });
+
+    return future.wait();
+  },
+  googleURL: function(url) {
+    var future = new Future();
+    var googleURL = new GoogleURL({key: 'AIzaSyC5t3jmwQcMBOr1PLTcyxD9pwwt2dFAl-4'});
+
+    googleURL.shorten(url, function(err, shortURL) {
+      if (err) {
+        future.throw(err);
+      } else {
+        future.return(shortURL);
+      }
     });
 
     return future.wait();

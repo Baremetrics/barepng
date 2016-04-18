@@ -1,3 +1,4 @@
 {
-  "phantomjs-prebuilt": "2.1.7"
+  "phantomjs-prebuilt": "2.1.7",
+  "google-url": "0.0.4"
 }

@@ -36,7 +36,14 @@ Template.home.events({
       $('.generate, .image').removeClass('loading');
     }).attr('src', url);
 
-    $('.url').val(url);
+    Meteor.call('googleURL', url, function(error, result) {
+      if (error) { 
+        console.log(error); 
+      } else {
+        console.log(result);
+        $('.url').html(result);
+      } 
+    });
   },
   'change .style .field': function(e) {
     var value = $(e.currentTarget).val();
@@ -49,11 +56,14 @@ Template.home.events({
       $('.symbol').hide();
     }
   },
-  'focus .url': function(e) {
-    $(e.currentTarget).select();
-  },
-  'keydown .url': function(e) {
-    e.preventDefault();
+  'click .url': function(e) {
+    var range = document.createRange();
+    var selection = window.getSelection();
+
+    range.selectNodeContents(e.currentTarget);
+    
+    selection.removeAllRanges();
+    selection.addRange(range);
   }
 });
 
