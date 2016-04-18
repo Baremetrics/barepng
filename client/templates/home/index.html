@@ -30,23 +30,10 @@
       </div>
 
       <div class="entry">
-        <label class="label style">Style
-          <select class="field" name="style">
-            <option value="default" selected>Default</option>
-            <option value="email">Email</option>
-          </select>
+      <label class="label symbol">Symbol <span class="aside">$^ = $1,000</span>
+          <input class="field" type="text" name="symbol" value="{{symbol}}" placeholder="^%25 = 100%">
         </label>
 
-        <label class="label goal" style="display: none;">Goal <span class="aside">Start date, start value, end date, end value</span>
-          <input class="field" type="text" name="goal" value="{{goal}}" placeholder="14578940,43891,14586716,44271">
-        </label>
-
-        <label class="label symbol">Symbol <span class="aside">$^ // $1,000</span>
-          <input class="field" type="text" name="symbol" value="{{symbol}}" placeholder="^%25 // 100%">
-        </label>
-      </div>
-
-      <div class="entry">
         <label class="label">Image Width <span class="aside">0 - 2000</span>
           <input class="field int" type="text" name="w" value="{{w}}" data-max="2000" placeholder="800">
         </label>

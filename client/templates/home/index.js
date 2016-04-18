@@ -24,7 +24,7 @@ Template.home.events({
 
       if (value.indexOf(',') != -1) {
         value = JSON.parse('['+ value +']');
-      } else if (key != 'style' && key != 'symbol') {
+      } else if (key != 'symbol') {
         value = Number(value);
       }
 
@@ -43,9 +43,8 @@ Template.home.events({
       $('.generate, .image').removeClass('loading');
 
       Meteor.call('gurl', url, function(error, result) {
-        if (error) { 
-          console.log(error); 
-          $('.url').html('URL Generator Failed');
+        if (error) {
+          $('.url').html(url);
         } else {
           $('.url').html(result);
         } 
@@ -55,17 +54,6 @@ Template.home.events({
   'keyup input': function(e) {
     if (e.keyCode == 13) {
       $('.generate').trigger('click');
-    }
-  },
-  'change .style .field': function(e) {
-    var value = $(e.currentTarget).val();
-
-    if (value == 'default') {
-      $('.goal').hide();
-      $('.symbol').show();
-    } else {
-      $('.goal').show();
-      $('.symbol').hide();
     }
   },
   'click .url': function(e) {

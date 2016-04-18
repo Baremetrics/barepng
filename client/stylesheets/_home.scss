@@ -51,13 +51,13 @@ body {
   display: flex;
   font-size: 16px;
   font-weight: 500;
-  align-items: flex-start;
 }
 
 .data-block {
   background-color: $black;
   display: flex;
   max-width: 450px;
+  max-height: 400px;
   flex-wrap: wrap;
   padding: 1rem 0 0 1rem;
   border-radius: 5px;
@@ -78,14 +78,8 @@ body {
     width: 100%;
     margin-right: 1rem;
 
-    &.style .field {
-      height: 42px;
-      font-size: 1rem;
-      background: none;
-      color: $white;
-    }
-    &.goal {
-      min-width: 70%;
+    &.symbol {
+      max-width: 110px;
     }
     .aside {
       font-size: 0.6rem;
@@ -124,6 +118,7 @@ body {
     color: $teal;
     text-decoration: none;
     margin-right: 1rem;
+    flex-shrink: 0;
 
     &:hover {
       background-color: $teal;
@@ -155,6 +150,7 @@ body {
   overflow: hidden;
   min-height: 100px;
   background: $teal;
+  align-self: flex-start;
 
   img {
     width: 100%;
