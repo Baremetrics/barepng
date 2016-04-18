@@ -39,12 +39,13 @@ Template.home.events({
 
     url = window.location.origin +'/api?v=3&'+ query_string;
 
-    $('.image img').load( function(){
+    $('.image img').load(function(){
       $('.generate, .image').removeClass('loading');
 
       Meteor.call('googleURL', url, function(error, result) {
         if (error) { 
           console.log(error); 
+          $('.url').html('URL Generator Failed');
         } else {
           $('.url').html(result);
         } 
