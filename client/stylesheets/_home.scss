@@ -7,17 +7,45 @@ body {
   background: $white;
 }
 
+.header {
+  color: $black;
+  font-weight: 100;
+  text-align: right;
+  display: flex;
+  flex-wrap: wrap;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 2rem 1rem;
+
+  h1 {
+    font-size: 5rem;
+    width: 100%;
+  }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    img {
+      margin: 0 0.5rem;
+      height: 30px;
+    }
+  }
+}
+
 .content {
   padding: 1rem;
   color: $white;
   display: flex;
   font-size: 16px;
+  font-weight: 500;
   align-items: flex-start;
 }
 
 .data-block {
   background-color: $black;
-  font-weight: 500;
   display: flex;
   max-width: 500px;
   flex-wrap: wrap;
