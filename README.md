@@ -1,6 +1,5 @@
-# BarePNG 
+# BarePNG [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 > Generate PNGs from Baremetrics SVGs
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Base keys
 **`data`**
