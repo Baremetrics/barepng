@@ -104,4 +104,4 @@ goal=[14578940,43891,14588444,44271]
 
 ---
 
-It's worth noting that once you're hosting that app there's no reason for you to not completely change the app. Try adding your own keys and CSS for the stuff that shows up at `/chart`. It's your app so make it yours! It's easy!
+It's worth noting that once you're hosting the app yourself there's no reason for you to not completely change it. Try adding your own keys and CSS for the stuff that shows up at `/chart`. It's your app so make it yours! It's easy!
