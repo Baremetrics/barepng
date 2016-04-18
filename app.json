@@ -13,12 +13,13 @@
     },
     "ROOT_URL": {
       "description": "App name you just set from up above",
-      "value": "name_from_above.herokuapp.com",
+      "value": "https://name_from_above.herokuapp.com",
       "required": true
     }
   },
   "addons": [
-    "mongolab:sandbox"
+    "mongolab:sandbox",
+    "dyno-metadata"
   ],
   "buildpacks": [
     {
