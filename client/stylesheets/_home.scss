@@ -170,11 +170,13 @@ body {
 }
 
 .disclaimer {
-  padding: 2rem 1rem;
+  padding: 2rem 8rem;
   font-weight: 500;
   line-height: 1.5;
   color: $black;
-  background-color: darken($white, 5%);
+  background-color: rgba($black, 0.05);
+  font-style: italic;
+  font-size: 0.8rem;
 
   a {
     color: rgba($blue, 0.8);
@@ -199,5 +201,8 @@ body {
   }
   .image {
     margin-left: 0;
+  }
+  .disclaimer {
+    padding: 1rem;
   }
 }
