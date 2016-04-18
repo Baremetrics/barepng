@@ -37,7 +37,7 @@ Template.home.events({
       query_string += k + '=' + (typeof d != 'string' ? JSON.stringify(d) : d);
     });
 
-    url = window.location.origin +'/api?v=3&'+ query_string;
+    url = window.location.origin +'/api?'+ query_string;
 
     $('.image img').load(function(){
       $('.generate, .image').removeClass('loading');

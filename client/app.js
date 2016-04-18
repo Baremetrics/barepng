@@ -1,3 +1,2 @@
 // Template.layout.rendered = function() {
-  
 // }

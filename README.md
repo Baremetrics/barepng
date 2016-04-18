@@ -1,5 +1,15 @@
 # BarePNG [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-> Generate PNGs from Baremetrics SVGs
+
+BarePNG is a little app we built to turn our Baremetrics SVGs into slick PNGs for our [Slack Bot](https://slack.com/apps/A0PSKV32Q-baremetrics) and now-gorgeous emails. Download, serve and enjoy or just use our little free standing [demo](https://barepng.herokuapp.com) to snag a few quick graph PNGs every now and again.
+
+## How it works
+
+The app itself is actually very simple. We have one page at `/chart` that hosts the svg, drawn from a small JavaScript file using the url queries.
+
+With that page in place all we have to do is call the `/api` url with the appropriate queries and PhantomJS will take care of the rest.
+
+Just look! `https://barepng.herokuapp.com/api?start=14579804&data=[0,100]&symbol=^%`
+![BarePNG Image](https://barepng.herokuapp.com/api?start=14579804&data=[0,100]&symbol=^%)
 
 ## Base keys
 **`data`**
@@ -72,17 +82,17 @@ goal=[14578940,43891,14588444,44271]
 > Base "Slack" graph
 
 ```
-?v=2&start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&symbol=$^
+?start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&symbol=$^
 ```
 
 > Base "Email" w/goal
 
 ```
-?v=2&style=email&start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&w=600&h=250&goal=[14578940,43891,14588444,44271]
+?style=email&start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&w=600&h=250&goal=[14578940,43891,14588444,44271]
 ```
 
 > Nice large % based graph with 7 day (week) steps
 
 ```
-?v=2&start=14579804&step=6048&data=[0,100]&w=1200&h=600&symbol=^%
+?start=14579804&step=6048&data=[0,100]&w=1200&h=600&symbol=^%
 ```
