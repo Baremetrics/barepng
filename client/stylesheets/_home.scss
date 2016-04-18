@@ -49,6 +49,9 @@ body {
     &.goal {
       min-width: 70%;
     }
+    span {
+      font-size: 0.6rem;
+    }
   }
   .field {
     border: 1px solid $white;

@@ -2,17 +2,17 @@
   <div class="content">
     <div class="data-block">
       <div class="entry">
-        <label class="label">Start
-          <input class="field int" type="text" name="start" value="{{start}}" data-max="99999999" placeholder="87654321">
+        <label class="label">Start <span>Start date for data</span>
+          <input class="field int" type="text" name="start" value="{{start}}" data-max="99999999" placeholder="14578940">
         </label>
 
-        <label class="label">Step
+        <label class="label">Step <span>Loop interval to add to start date</span>
           <input class="field int" type="text" name="step" value="{{step}}" data-max="999999" placeholder="864">
         </label>
       </div>
 
       <div class="entry data">
-        <label class="label">Data
+        <label class="label">Data <span>Initial value followed by a list numbers to add to the sum of any previous numbers</span>
           <input class="field int" type="text" name="data" value="{{data}}" placeholder="43991,101,47,78,-14,-30,-5,12,9,-3">
         </label>
       </div>
@@ -25,21 +25,21 @@
           </select>
         </label>
 
-        <label class="label goal" style="display: none;">Goal
+        <label class="label goal" style="display: none;">Goal <span>Start date, start value, end date, end value</span>
           <input class="field" type="text" name="goal" value="{{goal}}" placeholder="14578940,43891,14586716,44271">
         </label>
 
-        <label class="label symbol">Symbol
+        <label class="label symbol">Symbol <span>$^ // $1,000</span>
           <input class="field" type="text" name="symbol" value="{{symbol}}" placeholder="$^ // $1,000">
         </label>
       </div>
 
       <div class="entry">
-        <label class="label">Width
+        <label class="label">Image Width <span>0 - 2000</span>
           <input class="field int" type="text" name="w" value="{{w}}" data-max="2000" placeholder="800">
         </label>
 
-        <label class="label">Height
+        <label class="label">Image Height <span>0 - 2000</span>
           <input class="field int" type="text" name="h" value="{{h}}" data-max="2000" placeholder="400">
         </label>
       </div>
