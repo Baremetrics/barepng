@@ -1,51 +1,54 @@
 <template name="home">
   <div class="content">
-    <div class="data">
+    <div class="data-block">
       <div class="entry">
-        <h5 class="title">Start</h5>
-        <div class="field" data-key="start" contenteditable>{{start}}</div>
+        <label class="label">Start
+          <input class="field int" type="text" name="start" value="{{start}}" placeholder="87654321">
+        </label>
+
+        <label class="label">Step
+          <input class="field int" type="text" name="step" value="{{step}}" placeholder="864">
+        </label>
       </div>
 
-      <div class="entry">
-        <h5 class="title">Step</h5>
-        <div class="field" data-key="step" contenteditable>{{step}}</div>
-      </div>
-
-      <div class="entry">
-        <h5 class="title">Data</h5>
-        <div class="field" data-key="data" contenteditable>{{data}}</div>
-      </div>
-
-      <div class="entry">
-        <h5 class="title">Style</h5>
-
-        <select class="field field--select" data-key="style">
-          <option value="default" selected>Default</option>
-          <option value="email">Email</option>
-        </select>
-      </div>
-
-      <div class="entry symbol">
-        <h5 class="title">Symbol</h5>
-        <div class="field" data-key="symbol" contenteditable>{{symbol}}</div>
-      </div>
-
-      <div class="entry goal" style="display: none;">
-        <h5 class="title">Goal</h5>
-        <div class="field" data-key="goal" contenteditable>{{goal}}</div>
+      <div class="entry data">
+        <label class="label">Data
+          <input class="field int" type="text" name="data" value="{{data}}" placeholder="43991,101,47,78,-14,-30,-5,12,9,-3">
+        </label>
       </div>
 
       <div class="entry">
-        <h5 class="title">Width</h5>
-        <div class="field" data-key="w" contenteditable>{{w}}</div>
+        <label class="label style">Style
+          <select class="field" name="style">
+            <option value="default" selected>Default</option>
+            <option value="email">Email</option>
+          </select>
+        </label>
+
+        <label class="label goal" style="display: none;">Goal
+          <input class="field" type="text" name="goal" value="{{goal}}" placeholder="14578940,43891,14586716,44271">
+        </label>
+
+        <label class="label symbol">Symbol
+          <input class="field" type="text" name="symbol" value="{{symbol}}" placeholder="$^ // $1,000">
+        </label>
       </div>
 
       <div class="entry">
-        <h5 class="title">Height</h5>
-        <div class="field" data-key="h" contenteditable>{{h}}</div>
+        <label class="label">Width
+          <input class="field int" type="text" name="w" value="{{w}}" placeholder="800">
+        </label>
+
+        <label class="label">Height
+          <input class="field int" type="text" name="h" value="{{h}}" placeholder="400">
+        </label>
       </div>
 
-      <div class="generate">Generate Image</div>
+      <div class="action">
+        <a class="generate" href="javascript:void(0)">Generate Image</a>
+
+        <input class="url" type="text" name="url" value="https://chart.baremetricscdn.com/?v=3&start=14579804&step=864&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&style=default&symbol=$^&goal=[14578940,43891,14588444,44271]&w=800&h=400">
+      </div>
     </div>
 
     <div class="image">

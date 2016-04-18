@@ -85,6 +85,7 @@ spacebars-compiler@1.0.10
 templating@1.1.8
 templating-tools@1.0.3
 tracker@1.0.12
+tyler:autonumeric@1.0.0
 ui@1.0.10
 underscore@1.0.7
 url@1.0.8

@@ -5,14 +5,14 @@ Router.configure({
 Router.route('/', {
   name: 'home',
   data: {
-    start: 14579804,
+    start: 14578940,
     step: 864,
     data: [43991,101,47,78,-14,-30,-5,12,9,-3],
     symbol: '$^',
     style: 'default',
     w: 800,
     h: 400,
-    goal: [14578940,43891,14588444,44271]
+    goal: [14578940,43891,14586716,44271]
   }
 });
 

@@ -1,38 +1,27 @@
 Template.home.rendered = function() {
-  var titles = $('.entry .title');
-
-  var widths = titles.map(function() {
-    return $(this).width();
+  $('.int').autoNumeric('init', {
+    aSep: '',
+    mDec: 0
   });
-
-  titles.width(d3.max(widths));
 }
 
 Template.home.events({
   'click .generate': function(e) {
     $('.generate, .image').addClass('loading');
-    Meteor.setTimeout(function() {
-      $('.generate, .image').removeClass('loading');
-    }, 3000);
 
     var object = {};
 
     $('.entry .field').each(function() {
-      var key = $(this).data('key');
+      var key = $(this).attr('name');
+      var value = $(this).val();
 
-      if ($(this).hasClass('field--select')) {
-        object[key] = $(this).val();
-      } else {
-        var value = $(this).html();
-
-        if (value.indexOf(',') != -1) {
-          value = JSON.parse('['+ value +']');
-        } else if (key != 'style' && key != 'symbol') {
-          value = Number(value);
-        }
-
-        object[key] = value;
+      if (value.indexOf(',') != -1) {
+        value = JSON.parse('['+ value +']');
+      } else if (key != 'style' && key != 'symbol') {
+        value = Number(value);
       }
+
+      object[key] = value;
     });
 
     var query_string = '';
@@ -41,9 +30,15 @@ Template.home.events({
       query_string += k + '=' + (typeof d != 'string' ? JSON.stringify(d) : d);
     });
 
-    $('.image img').attr('src', window.location.origin +'/api?v=3&'+ query_string);
+    var url = window.location.origin +'/api?v=3&'+ query_string;
+
+    $('.image img').load( function(){
+      $('.generate, .image').removeClass('loading');
+    }).attr('src', url);
+
+    $('.url').val(url);
   },
-  'change .field--select': function(e) {
+  'change .style .field': function(e) {
     var value = $(e.currentTarget).val();
 
     if (value == 'default') {
@@ -53,6 +48,12 @@ Template.home.events({
       $('.goal').show();
       $('.symbol').hide();
     }
+  },
+  'focus .url': function(e) {
+    $(e.currentTarget).select();
+  },
+  'keydown .url': function(e) {
+    e.preventDefault();
   }
 });
 
