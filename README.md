@@ -1,9 +1,5 @@
-# BarePNG – V2
+# BarePNG
 > Generate PNGs from Baremetrics SVGs
-
-Source: https://dashboard.baremetrics.com/chart/v2  
-Base:   https://barepng.herokuapp.com  
-CDN:    https://chart.baremetricscdn.com  
 
 ## Base keys
 **`data`**
