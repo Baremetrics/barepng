@@ -27,6 +27,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-bottom: 0.5rem;
 
     img {
       margin: 0 0.5rem;
@@ -47,7 +48,7 @@ body {
 .data-block {
   background-color: $black;
   display: flex;
-  max-width: 500px;
+  max-width: 450px;
   flex-wrap: wrap;
   padding: 1rem 0 0 1rem;
   border-radius: 5px;
@@ -77,7 +78,7 @@ body {
     &.goal {
       min-width: 70%;
     }
-    span {
+    .aside {
       font-size: 0.6rem;
     }
   }
@@ -138,7 +139,7 @@ body {
 }
 
 .image {
-  max-width: calc(100% - 500px);
+  max-width: 100%;
   border: 1px solid $teal;
   margin-left: 1rem;
   border-radius: 5px;
@@ -156,5 +157,38 @@ body {
     img {
       opacity: 0;
     }
+  }
+}
+
+.disclaimer {
+  padding: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $black;
+  margin-bottom: 1rem;
+
+  a {
+    color: rgba($blue, 0.8);
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
+@include breakpoint(1000px) {
+  .content {
+    flex-wrap: wrap;
+  }
+  .data-block {
+    max-width: 100%;
+    margin-bottom: 1rem;
+
+    .aside {
+      display: none;
+    }
+  }
+  .image {
+    margin-left: 0;
   }
 }
