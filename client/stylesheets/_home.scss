@@ -107,7 +107,7 @@ body {
 }
 
 .image {
-  width: calc(100% - 500px);
+  max-width: calc(100% - 500px);
   border: 1px solid $teal;
   margin-left: 1rem;
   border-radius: 5px;

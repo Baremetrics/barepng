@@ -1,15 +1,22 @@
 Template.home.rendered = function() {
-  $('.int').autoNumeric('init', {
-    aSep: '',
-    mDec: 0
+  $('.int').each(function() {
+    var max = $(this).data('max');
+
+    $(this).autoNumeric('init', {
+      aSep: '',
+      vMin: 0,
+      vMax: max
+    });
   });
 }
 
 Template.home.events({
   'click .generate': function(e) {
-    $('.generate, .image').addClass('loading');
+    var object = {},
+        query_string = '',
+        url;
 
-    var object = {};
+    $('.generate, .image').addClass('loading');
 
     $('.entry .field').each(function() {
       var key = $(this).attr('name');
@@ -24,13 +31,13 @@ Template.home.events({
       object[key] = value;
     });
 
-    var query_string = '';
+    query_string = '';
     _.each(object, function(d, k) {
       if (query_string != '') query_string += '&';
       query_string += k + '=' + (typeof d != 'string' ? JSON.stringify(d) : d);
     });
 
-    var url = window.location.origin +'/api?v=3&'+ query_string;
+    url = window.location.origin +'/api?v=3&'+ query_string;
 
     $('.image img').load( function(){
       $('.generate, .image').removeClass('loading');
@@ -40,10 +47,14 @@ Template.home.events({
       if (error) { 
         console.log(error); 
       } else {
-        console.log(result);
         $('.url').html(result);
       } 
     });
+  },
+  'keyup input': function(e) {
+    if (e.keyCode == 13) {
+      $('.generate').trigger('click');
+    }
   },
   'change .style .field': function(e) {
     var value = $(e.currentTarget).val();
