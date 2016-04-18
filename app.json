@@ -7,12 +7,12 @@
   "keywords": ["graph", "chart", "image", "generator", "converter", "metrics"],
   "env": {
     "DISABLE_WEBSOCKETS": {
-      "description": "Leaving this true will help you avoid errors if you ever us caching.",
+      "description": "Leaving this true will help you avoid errors if you ever use caching",
       "value": "true",
       "required": true
     },
     "ROOT_URL": {
-      "description": "Name of your app from up above",
+      "description": "App name you just set from up above",
       "value": "name_from_above.herokuapp.com",
       "required": true
     }
