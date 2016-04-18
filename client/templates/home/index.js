@@ -41,15 +41,15 @@ Template.home.events({
 
     $('.image img').load( function(){
       $('.generate, .image').removeClass('loading');
-    }).attr('src', url);
 
-    Meteor.call('googleURL', url, function(error, result) {
-      if (error) { 
-        console.log(error); 
-      } else {
-        $('.url').html(result);
-      } 
-    });
+      Meteor.call('googleURL', url, function(error, result) {
+        if (error) { 
+          console.log(error); 
+        } else {
+          $('.url').html(result);
+        } 
+      });
+    }).attr('src', url);
   },
   'keyup input': function(e) {
     if (e.keyCode == 13) {
