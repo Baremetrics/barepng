@@ -39,7 +39,7 @@ Template.home.events({
 
     url = window.location.origin +'/api?'+ query_string;
 
-    $('.image img').load(function(){
+    $('.image img').load(function() {
       $('.generate, .image').removeClass('loading');
 
       Meteor.call('gurl', url, function(error, result) {
