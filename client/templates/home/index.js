@@ -11,7 +11,7 @@ Template.home.rendered = function() {
 
   $('.image img').load(function() {
     $('.generate, .image').removeClass('loading');
-  }).attr('src', 'http://goo.gl/q3XzE8');
+  }).attr('src', 'http://goo.gl/SyhkO2');
 }
 
 Template.home.events({
@@ -40,6 +40,8 @@ Template.home.events({
       if (query_string != '') query_string += '&';
       query_string += k + '=' + (typeof d != 'string' ? JSON.stringify(d) : d);
     });
+
+    console.log(query_string);
 
     url = window.location.origin +'/api?'+ query_string;
 
