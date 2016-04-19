@@ -1,7 +1,8 @@
 $white: #FAF8F8;
-$teal: #17EAD9;
-$blue: #6078EA;
-$black: #312f2f;
+$teal: #00ff75;
+$blue: #009dff;
+$black: #282b35;
+$purple: #a172c6;
 
 body {
   background: $white;
@@ -87,7 +88,7 @@ body {
   }
   .field {
     border: 1px solid $white;
-    padding: 0.7rem 0 0.7rem 1rem;
+    padding: 0.7rem 0 0.7rem 0.7rem;
     outline: none;
     border-radius: 5px;
     background: none;
@@ -144,21 +145,30 @@ body {
 
 .image {
   width: 100%;
-  border: 1px solid $teal;
+  border: 1px solid $blue;
   margin-left: 1rem;
   border-radius: 5px;
   overflow: hidden;
   min-height: 100px;
-  background: $teal;
+  background: linear-gradient(to top left, adjust-hue($blue, 5), $blue);
   align-self: flex-start;
+  position: relative;
 
   img {
     width: 100%;
     display: block;
   }
   &.loading {
-    background: $teal url('images/loaders/puff.svg') no-repeat center;
-
+    
+    &:after {
+      content: '';
+      position: absolute;
+      background: url('images/loaders/puff.svg') no-repeat center;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
     img {
       opacity: 0;
     }

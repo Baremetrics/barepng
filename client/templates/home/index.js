@@ -8,6 +8,10 @@ Template.home.rendered = function() {
       vMax: max
     });
   });
+
+  $('.image img').load(function() {
+    $('.generate, .image').removeClass('loading');
+  }).attr('src', 'http://goo.gl/q3XzE8');
 }
 
 Template.home.events({
@@ -17,6 +21,7 @@ Template.home.events({
         url;
 
     $('.generate, .image').addClass('loading');
+    $('.url').html('');
 
     $('.entry .field').each(function() {
       var key = $(this).attr('name');
@@ -31,7 +36,6 @@ Template.home.events({
       object[key] = value;
     });
 
-    query_string = '';
     _.each(object, function(d, k) {
       if (query_string != '') query_string += '&';
       query_string += k + '=' + (typeof d != 'string' ? JSON.stringify(d) : d);
@@ -40,14 +44,14 @@ Template.home.events({
     url = window.location.origin +'/api?'+ query_string;
 
     $('.image img').load(function() {
-      $('.generate, .image').removeClass('loading');
-
       Meteor.call('gurl', url, function(error, result) {
+        $('.generate, .image').removeClass('loading');
+        
         if (error) {
           $('.url').html(url);
         } else {
           $('.url').html(result);
-        } 
+        }
       });
     }).attr('src', url);
   },
