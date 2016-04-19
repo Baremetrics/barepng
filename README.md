@@ -13,16 +13,16 @@ The app itself is actually very simple. We have one page at `/chart` that hosts 
 
 With that page in place all we have to do is call the `/api` url with the appropriate queries and [PhantomJS](http://phantomjs.org/) will take care of the rest.
 
-Just look! `https://barepng.herokuapp.com/api?start=14579804&data=[0,10,20,50,20]&symbol=^%25`
-![BarePNG Image](https://barepng.herokuapp.com/api?start=14579804&data=[0,10,20,50,20]&symbol=^%25)
+Just look! `https://barepng.herokuapp.com/api?start=14609556&data=[0,10,20,50,20]&symbol=^%25`
+![BarePNG Image](https://barepng.herokuapp.com/api?start=14609556&data=[0,10,20,50,20]&symbol=^%25)
 
 ## Base keys
 **`start`**
 > 8 digit number to start the graph on, will be added unto just like data with the `step` value 
 
 ```js
-// Math.round(new Date().getTime()/100000)
-start=14579804
+// new Date().setHours(0,0,0,0) / 100000
+start=14609556
 ```
 
 **`step`**
@@ -39,7 +39,7 @@ step=864
 > `Array` of values starting with an initial value and proceeding with additional values which will be added on to the previous summarized value (i.e `data=100,50,-10` // 100, 150, 140)
 
 ```js
-data=[43991,101,47,78,-14,-30,-5,12,9,-3]
+data=[4500,20,35,5,-20,15,-5,20,15,-5,10,-15,5]
 ```
 
 **`w`**
@@ -80,26 +80,26 @@ symbol=$^ // $1,000
 > **note this is a little different then the data key as all four values are their actual final values and not values which will be added onto inside a loop*
 
 ```js
-goal=[14578940,43891,14588444,44271]
+goal=[14609556,4500,14619924,4600]
 ```
 
 ## Example URLs
 > Base "Slack" graph
 
 ```
-?start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&symbol=$^
+?start=14609556&data=[4500,20,35,5,-20,15,-5,20,15,-5,10,-15,5]&symbol=$^
 ```
 
 > Base "Email" w/goal
 
 ```
-?style=email&start=14579804&data=[43991,101,47,78,-14,-30,-5,12,9,-3]&w=600&h=250&goal=[14578940,43891,14588444,44271]
+?style=email&start=14609556&data=[4500,20,35,5,-20,15,-5,20,15,-5,10,-15,5]&w=600&h=250&goal=[14609556,4500,14619924,4600]
 ```
 
 > Nice large % based graph with 7 day (week) steps
 
 ```
-?start=14579804&step=6048&data=[0,100]&w=1200&h=600&symbol=^%
+?start=14609556&step=6048&data=[0,100]&w=1200&h=600&symbol=^%
 ```
 
 ---
