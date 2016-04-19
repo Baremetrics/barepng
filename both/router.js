@@ -5,9 +5,9 @@ Router.configure({
 Router.route('/', {
   name: 'home',
   data: {
-    start: 14578940,
+    start: Math.round(new Date().getTime() / 100000),
     step: 864,
-    data: [45000,100,40,65,-25,-15,-5,15,10,-5],
+    data: [4500,20,35,5,-20,15,-5,15,10,-10,5,-20,5],
     symbol: '$^',
     w: 780,
     h: 380,

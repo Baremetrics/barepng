@@ -9,9 +9,7 @@ Template.home.rendered = function() {
     });
   });
 
-  $('.image img').load(function() {
-    $('.generate, .image').removeClass('loading');
-  }).attr('src', 'http://goo.gl/xZvZwR');
+  $('.generate').trigger('click');
 }
 
 Template.home.events({
