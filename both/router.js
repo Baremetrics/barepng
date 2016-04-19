@@ -5,7 +5,7 @@ Router.configure({
 Router.route('/', {
   name: 'home',
   data: {
-    start: Math.round(new Date().getTime() / 100000) - (865 * 12),
+    start: Math.round(new Date().getTime() / 100000) - (864 * 12),
     step: 864,
     data: [4500,20,35,5,-20,15,-5,20,15,-5,10,-15,5],
     symbol: '$^',
