@@ -118,7 +118,6 @@ body {
     padding: 0.7rem 1rem;
     color: $teal;
     text-decoration: none;
-    margin-right: 1rem;
     flex-shrink: 0;
 
     &:hover {
@@ -140,6 +139,7 @@ body {
     color: rgba($white, 0.5);
     outline: none;
     @extend %elip;
+    margin-left: 1rem; 
   }
 }
 
