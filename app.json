@@ -17,6 +17,7 @@
       "required": true
     }
   },
+  "image": "heroku/nodejs",
   "addons": [
     "mongolab:sandbox"
   ],
