@@ -11,7 +11,7 @@ Template.home.rendered = function() {
 
   $('.image img').load(function() {
     $('.generate, .image').removeClass('loading');
-  }).attr('src', 'http://goo.gl/SyhkO2');
+  }).attr('src', 'http://goo.gl/xZvZwR');
 }
 
 Template.home.events({
