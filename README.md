@@ -1,11 +1,11 @@
 # [Baremetrics](https://baremetrics.com/) BarePNG [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/baremetrics/barepng/tree/public)
-_[Baremetrics](https://baremetrics.com) provides one-click analytics & insights for Stripe. **[Get started today!](https://baremetrics.com)**_
+_[Baremetrics](https://baremetrics.com) provides one-click subscription analytics & insights. **[Get started today!](https://baremetrics.com)**_
 
 Built by [Tyler van der Hoeven](https://github.com/tyvdh)
 
 ---
 
-BarePNG is a little app we built to turn our Baremetrics SVGs into slick PNGs for our [Slack Bot](https://slack.com/apps/A0PSKV32Q-baremetrics) and now-gorgeous emails. Download, serve and enjoy or just use our little free standing **[demo](https://barepng.herokuapp.com)** to snag a few quick graph PNGs every now and again.
+BarePNG is a little app we built to turn our charts into slick PNGs for our [Slack Bot](https://slack.com/apps/A0PSKV32Q-baremetrics) and emails. Download, serve and enjoy or just use our little free standing **[demo](https://barepng.herokuapp.com)** to snag a few quick graph PNGs every now and again.
 
 ## How it works
 
