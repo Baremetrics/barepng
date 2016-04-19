@@ -212,3 +212,14 @@ body {
     padding: 1rem;
   }
 }
+@include breakpoint(600px) {
+  .content {
+    padding: 0;
+  }
+  .data-block, .image {
+    border-radius: 0;
+  }
+  .image {
+    margin-bottom: 1rem;
+  }
+}
