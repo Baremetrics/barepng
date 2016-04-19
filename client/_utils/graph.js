@@ -7,7 +7,7 @@ Graph = function() {
     this.object.data = '[0,100]';
 
   if (!this.object.start)
-    this.object.start = Math.round(new Date().getTime() / 100000);
+    this.object.start = Math.round(new Date().setHours(0,0,0,0) / 100000);
 
   if (!this.object.step)
     this.object.step = 864;
@@ -205,7 +205,7 @@ Graph.prototype.draw = function() {
     this.xAxis = d3.svg.axis()
       .tickValues(this.dates)
       .tickFormat(function(d) {
-        var date = new Date(d);
+        var date = new Date(new Date(d).setHours(0,0,0,0));
         return date.getDate() +' '+ self.months[date.getMonth()];
       })
       .tickPadding(0)
