@@ -7,7 +7,7 @@ Graph = function() {
     this.object.data = '[0,100]';
 
   if (!this.object.start)
-    this.object.start = Math.round(new Date().getTime() / 100000) - 25056;
+    this.object.start = Math.round(new Date().getTime() / 100000);
 
   if (!this.object.step)
     this.object.step = 864;
@@ -94,6 +94,7 @@ Graph = function() {
   this.yScale = null;
   this.xAxis = null;
   this.yAxis = null;
+  this.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 }
 
 Graph.prototype.clampGoal = function(data) {
@@ -204,8 +205,8 @@ Graph.prototype.draw = function() {
     this.xAxis = d3.svg.axis()
       .tickValues(this.dates)
       .tickFormat(function(d) {
-        var date = new Date(d).toDateString().split(' ');
-        return date[1] +' '+ date[2];
+        var date = new Date(d);
+        return date.getDate() +' '+ self.months[date.getMonth()];
       })
       .tickPadding(0)
       .tickSize(0, 0)
