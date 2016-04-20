@@ -19,7 +19,7 @@ Template.home.events({
         url;
 
     $('.generate, .image').addClass('loading');
-    $('.url').html('');
+    $('.url').hide();
 
     $('.entry .field').each(function() {
       var key = $(this).attr('name');
@@ -44,12 +44,7 @@ Template.home.events({
     $('.image img').load(function() {
       Meteor.call('gurl', url, function(error, result) {
         $('.generate, .image').removeClass('loading');
-        
-        if (error) {
-          $('.url').html(url);
-        } else {
-          $('.url').html(result);
-        }
+        $('.url').html(error ? url : result).show();
       });
     }).attr('src', url);
   },
