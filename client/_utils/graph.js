@@ -154,9 +154,15 @@ Graph.prototype.parseValue = function(raw) {
 Graph.prototype.draw = function() {
   var self = this;
 
+  var min = d3.min(this.amounts);
+  var max = d3.max(this.amounts);
+
+  if (min == max)
+    max++;
+
   if (this.object.style == 'email') {
     this.yScale = d3.scale.linear()
-      .domain(d3.extent(this.amounts))
+      .domain([min, max])
       .range([this.object.h - (this.object.goal ? 87 : 27), 3]);
 
     this.xScale = d3.scale.linear()
@@ -164,7 +170,7 @@ Graph.prototype.draw = function() {
       .range([0, this.object.w]);
   } else {
     this.yScale = d3.scale.linear()
-      .domain(d3.extent(this.amounts))
+      .domain([min, max])
       .range([this.object.h - (d3.min(this.amounts) == 0 ? 48 : 72), 24]);
 
     this.xScale = d3.scale.linear()
