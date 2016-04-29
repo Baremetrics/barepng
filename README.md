@@ -105,3 +105,28 @@ goal=[14609556,4500,14619924,4600]
 ---
 
 It's worth noting that once you're hosting the app yourself there's no reason for you to not completely change it. Try adding your own keys and CSS for the stuff that shows up at `/chart`. It's your app so make it yours! It's easy!
+
+## Developing
+
+1. clone this repo or your own fork
+2. Install meteor if you haven't already [https://www.meteor.com/install](https://www.meteor.com/install)
+3. cd into this directory and run `meteor`. Your app will be up and running locally
+
+## Deploying to Heroku yourself for hacking
+
+Replace `<app-name>` with the name of your app
+
+1. Fork this repo
+2. Clone your fork and `cd` into it locally
+3. Create an empty heroku app called <app-name>
+    * `heroku create <app-name>`
+4. Add heroku as a remote to your fork
+    * `git remote add heroku git@heroku.com:<app-name>.git`
+5. Set ENV vars for
+    * `heroku config: set ROOT_URL=https://<app-name>.herokuapp.com DISABLE_WEBSOCKETS=true`
+6. Create the MONGO addon:
+    * `heroku addons:create mongolab:sandbox`
+7. Create a Procfile in the root directory of this repo and define the web process
+    * `touch Procfile && echo "web: .meteor/heroku_build/bin/node .meteor/heroku_build/app/main.js" >> Procfile`
+8. Push the public branch to heroku
+    * `git push heroku public:master`
